@@ -1,0 +1,47 @@
+#svg-container svg:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  #svg-container svg:nth-child(2) {
+    animation-delay: 0.25s;
+  }
+  
+  #svg-container svg:nth-child(3) {
+    animation-delay: 0.5s;
+  }
+  
+  #svg-container svg {
+    margin-left: 2px;
+    margin-right: 2px;
+    animation: size-change 1.5s infinite;
+  }
+  
+  @keyframes size-change {
+    0%,
+    100% {
+      transform: scale(1);
+      fill-opacity: 0.5;
+    }
+  
+    33% {
+      transform: scale(1.5);
+      fill-opacity: 1;
+    }
+  
+    66% {
+      transform: scale(1);
+      fill-opacity: 0.5;
+    }
+  }
+  
+  .svg-container:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  .svg-container:nth-child(2) {
+    animation-delay: 1s;
+  }
+  
+  .svg-container:nth-child(3) {
+    animation-delay: 2s;
+  }

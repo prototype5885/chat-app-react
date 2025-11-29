@@ -6,16 +6,17 @@ export default function ServerList() {
   const [serverList, setServerList] = useState<ServerModel[]>([]);
 
   useEffect(() => {
-    const servers: ServerModel[] = [
-      { id: "1", owner_id: "0", name: "First" },
-      { id: "2", owner_id: "0", name: "Second" },
-      { id: "3", owner_id: "0", name: "Third" },
-      { id: "4", owner_id: "0", name: "Fourth" },
-      { id: "5", owner_id: "0", name: "Fifth" },
-      { id: "6", owner_id: "0", name: "Sixth" },
-    ];
+    const fetchServers = async () => {
+      const response = await fetch("/api/server", { method: "GET" });
+      if (!response.ok) {
+        throw new Error(`${response.status} getting server list`);
+      }
 
-    setServerList(servers);
+      const servers: ServerModel[] = await response.json();
+      setServerList(servers);
+    };
+
+    fetchServers();
   }, []);
 
   return (
@@ -27,7 +28,7 @@ export default function ServerList() {
           key={server.id}
           id={server.id}
           type="server"
-          name={server.id}
+          name={server.name}
           pic={server.picture}
           selected={false}
         />
